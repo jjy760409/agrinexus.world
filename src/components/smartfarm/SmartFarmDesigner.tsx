@@ -21,6 +21,10 @@ import SwarmRoboticsPanel from './SwarmRoboticsPanel';
 import SpaceAgriculturePanel from './SpaceAgriculturePanel';
 import DNAEditorPanel from './DNAEditorPanel';
 import LogisticsDashboard from './LogisticsDashboard';
+import HologramPanel from './HologramPanel';
+import QuantumNetworkPanel from './QuantumNetworkPanel';
+import BlockchainExchangePanel from './BlockchainExchangePanel';
+import NegotiationPanel from './NegotiationPanel';
 import FileUploadAnalyzer from '@/components/upload/FileUploadAnalyzer';
 
 type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'dna' | 'logistics' | 'hologram' | 'quantum' | 'blockchain' | 'negotiation' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
@@ -621,34 +625,9 @@ export default function SmartFarmDesigner() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            className="h-full glass rounded-xl p-6"
+                            className="h-full"
                         >
-                            <div className="text-center py-12">
-                                <div className="text-8xl mb-6">🔮</div>
-                                <h2 className="text-3xl font-bold gradient-text mb-4">홀로그램 3D 시각화</h2>
-                                <p className="text-white/60 max-w-2xl mx-auto mb-8">
-                                    세계 최초 실시간 홀로그램 스마트팜 시각화 엔진<br />
-                                    농장 전체 뷰, 성장 타임랩스, 분자 수준 분석, 데이터 시각화
-                                </p>
-                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
-                                    <div className="bg-purple-500/20 border border-purple-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">🏭</div>
-                                        <div className="font-bold">농장 전체 뷰</div>
-                                    </div>
-                                    <div className="bg-cyan-500/20 border border-cyan-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">🌱</div>
-                                        <div className="font-bold">성장 타임랩스</div>
-                                    </div>
-                                    <div className="bg-pink-500/20 border border-pink-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">⚛️</div>
-                                        <div className="font-bold">분자 수준</div>
-                                    </div>
-                                    <div className="bg-emerald-500/20 border border-emerald-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">📊</div>
-                                        <div className="font-bold">데이터 시각화</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <HologramPanel />
                         </motion.div>
                     )}
 
@@ -659,38 +638,9 @@ export default function SmartFarmDesigner() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            className="h-full glass rounded-xl p-6"
+                            className="h-full"
                         >
-                            <div className="text-center py-12">
-                                <div className="text-8xl mb-6">⚛️</div>
-                                <h2 className="text-3xl font-bold gradient-text mb-4">양자 통신 네트워크</h2>
-                                <p className="text-white/60 max-w-2xl mx-auto mb-8">
-                                    세계 최초 양자 암호화 스마트팜 보안 통신<br />
-                                    BB84/E91 QKD 프로토콜, 양자 얽힘, 절대 보안 메시징
-                                </p>
-                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
-                                    <div className="bg-blue-500/20 border border-blue-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">🌐</div>
-                                        <div className="font-bold">중앙 허브</div>
-                                        <div className="text-xs text-white/50">64 Qubits</div>
-                                    </div>
-                                    <div className="bg-green-500/20 border border-green-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">📡</div>
-                                        <div className="font-bold">중계 노드</div>
-                                        <div className="text-xs text-white/50">2개 활성</div>
-                                    </div>
-                                    <div className="bg-yellow-500/20 border border-yellow-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">🛰️</div>
-                                        <div className="font-bold">위성 링크</div>
-                                        <div className="text-xs text-white/50">850nm</div>
-                                    </div>
-                                    <div className="bg-red-500/20 border border-red-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">🔐</div>
-                                        <div className="font-bold">양자 키</div>
-                                        <div className="text-xs text-white/50">1000+ 생성</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <QuantumNetworkPanel />
                         </motion.div>
                     )}
 
@@ -701,43 +651,9 @@ export default function SmartFarmDesigner() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            className="h-full glass rounded-xl p-6"
+                            className="h-full"
                         >
-                            <div className="text-center py-12">
-                                <div className="text-8xl mb-6">⛓️</div>
-                                <h2 className="text-3xl font-bold gradient-text mb-4">블록체인 농산물 거래소</h2>
-                                <p className="text-white/60 max-w-2xl mx-auto mb-8">
-                                    세계 최초 분산형 스마트팜 DEX<br />
-                                    작물 토큰화, 탄소 크레딧, 스마트 컨트랙트 에스크로
-                                </p>
-                                <div className="grid grid-cols-5 gap-4 max-w-4xl mx-auto">
-                                    <div className="bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">💎</div>
-                                        <div className="font-bold">ANX</div>
-                                        <div className="text-emerald-400">₩1,000</div>
-                                    </div>
-                                    <div className="bg-gradient-to-br from-red-500/20 to-pink-500/20 border border-red-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">🍓</div>
-                                        <div className="font-bold">STB</div>
-                                        <div className="text-emerald-400">₩5,000</div>
-                                    </div>
-                                    <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">🍅</div>
-                                        <div className="font-bold">TMT</div>
-                                        <div className="text-emerald-400">₩3,000</div>
-                                    </div>
-                                    <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">🌍</div>
-                                        <div className="font-bold">CRC</div>
-                                        <div className="text-emerald-400">₩50,000</div>
-                                    </div>
-                                    <div className="bg-gradient-to-br from-gray-500/20 to-slate-500/20 border border-gray-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">💵</div>
-                                        <div className="font-bold">KRWS</div>
-                                        <div className="text-white/70">₩1</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <BlockchainExchangePanel />
                         </motion.div>
                     )}
 
@@ -748,38 +664,9 @@ export default function SmartFarmDesigner() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            className="h-full glass rounded-xl p-6"
+                            className="h-full"
                         >
-                            <div className="text-center py-12">
-                                <div className="text-8xl mb-6">🤖</div>
-                                <h2 className="text-3xl font-bold gradient-text mb-4">AI 자동 협상 시스템</h2>
-                                <p className="text-white/60 max-w-2xl mx-auto mb-8">
-                                    세계 최초 지능형 농산물 가격 협상 AI<br />
-                                    적응형 전략, 시장 인텔리전스, 자동 계약 생성
-                                </p>
-                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
-                                    <div className="bg-indigo-500/20 border border-indigo-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">📈</div>
-                                        <div className="font-bold">92%</div>
-                                        <div className="text-xs text-white/50">성공률</div>
-                                    </div>
-                                    <div className="bg-purple-500/20 border border-purple-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">💰</div>
-                                        <div className="font-bold">8.5%</div>
-                                        <div className="text-xs text-white/50">평균 절감</div>
-                                    </div>
-                                    <div className="bg-pink-500/20 border border-pink-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">⚡</div>
-                                        <div className="font-bold">3.2</div>
-                                        <div className="text-xs text-white/50">평균 라운드</div>
-                                    </div>
-                                    <div className="bg-cyan-500/20 border border-cyan-500 rounded-xl p-4">
-                                        <div className="text-3xl mb-2">😊</div>
-                                        <div className="font-bold">88%</div>
-                                        <div className="text-xs text-white/50">만족도</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <NegotiationPanel />
                         </motion.div>
                     )}
 
