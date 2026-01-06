@@ -2,9 +2,10 @@
 
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Box, Cylinder, Sphere } from '@react-three/drei';
+import { Cylinder, Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 import { FarmType } from '@/types/smartfarm';
+import DetailedFarmInterior from './DetailedFarmInterior';
 
 interface TransparentFarmProps {
     farmType: FarmType;
@@ -141,18 +142,11 @@ export default function TransparentFarm({ farmType, dimensions, autoRotate = tru
                 material={glassMaterial}
             />
 
-            {/* 내부 재배 시스템 */}
-            <InteriorGrowingSystems
-                width={width}
-                length={length}
-                height={height}
-                floors={dimensions.floors}
+            {/* 상세 내부 스마트팜 설비 */}
+            <DetailedFarmInterior
                 farmType={farmType}
-                interiorColor={config.interiorColor}
+                dimensions={dimensions}
             />
-
-            {/* LED 조명 */}
-            <LEDLighting width={width} length={length} height={height} floors={dimensions.floors} />
 
             {/* 내부 글로우 효과 */}
             <mesh ref={glowRef} position={[0, height / 2, 0]}>
