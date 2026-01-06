@@ -19,9 +19,11 @@ import TraceabilityPanel from './TraceabilityPanel';
 import PlantConversationPanel from './PlantConversationPanel';
 import SwarmRoboticsPanel from './SwarmRoboticsPanel';
 import SpaceAgriculturePanel from './SpaceAgriculturePanel';
+import DNAEditorPanel from './DNAEditorPanel';
+import LogisticsDashboard from './LogisticsDashboard';
 import FileUploadAnalyzer from '@/components/upload/FileUploadAnalyzer';
 
-type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
+type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'dna' | 'logistics' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
 
 export default function SmartFarmDesigner() {
     const [activeTab, setActiveTab] = useState<DesignerTab>('design');
@@ -46,6 +48,8 @@ export default function SmartFarmDesigner() {
         { id: 'conversation' as const, label: '🌿 식물대화', icon: '💬' },
         { id: 'swarm' as const, label: '🤖 군집로봇', icon: '🐝' },
         { id: 'space' as const, label: '🚀 우주농업', icon: '🌌' },
+        { id: 'dna' as const, label: '🧬 DNA편집', icon: '✂️' },
+        { id: 'logistics' as const, label: '🚚 글로벌물류', icon: '📦' },
         { id: 'crops' as const, label: '작물 정보', icon: '🌱' },
         { id: 'systems' as const, label: '설비 시스템', icon: '⚡' },
         { id: 'ai' as const, label: 'AI 분석', icon: '🧠' },
@@ -577,6 +581,32 @@ export default function SmartFarmDesigner() {
                             className="h-full"
                         >
                             <SpaceAgriculturePanel />
+                        </motion.div>
+                    )}
+
+                    {/* DNA Editor Tab - CRISPR 편집 시뮬레이터 */}
+                    {activeTab === 'dna' && (
+                        <motion.div
+                            key="dna"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="h-full"
+                        >
+                            <DNAEditorPanel />
+                        </motion.div>
+                    )}
+
+                    {/* Logistics Dashboard - 글로벌 물류 */}
+                    {activeTab === 'logistics' && (
+                        <motion.div
+                            key="logistics"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="h-full"
+                        >
+                            <LogisticsDashboard />
                         </motion.div>
                     )}
 
