@@ -11,9 +11,10 @@ import AIAgentPanel from './AIAgentPanel';
 import SimulationPanel from './SimulationPanel';
 import Farm3DScene from './Farm3DScene';
 import TransparentFarm from './TransparentFarm';
+import FullAutomationSimulation from './FullAutomationSimulation';
 import FileUploadAnalyzer from '@/components/upload/FileUploadAnalyzer';
 
-type DesignerTab = 'design' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
+type DesignerTab = 'design' | 'automation' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
 
 export default function SmartFarmDesigner() {
     const [activeTab, setActiveTab] = useState<DesignerTab>('design');
@@ -34,6 +35,7 @@ export default function SmartFarmDesigner() {
 
     const tabs = [
         { id: 'design' as const, label: '3D 설계', icon: '🏗️' },
+        { id: 'automation' as const, label: '🍓 전자동화', icon: '🏭' },
         { id: 'upload' as const, label: '파일 업로드', icon: '📁' },
         { id: 'equipment' as const, label: '장비 설정', icon: '⚙️' },
         { id: 'agents' as const, label: 'AI 에이전트', icon: '🤖' },
@@ -349,6 +351,101 @@ export default function SmartFarmDesigner() {
                                             sectionColor="#00ff8866"
                                         />
                                         <Environment preset="city" />
+                                    </Suspense>
+                                </Canvas>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Automation Tab - Full 3D Simulation */}
+                    {activeTab === 'automation' && (
+                        <motion.div
+                            key="automation"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="h-full flex gap-4"
+                        >
+                            {/* Left Panel - Info */}
+                            <div className="w-72 glass rounded-xl p-4 overflow-y-auto">
+                                <h3 className="font-bold mb-4 flex items-center gap-2">
+                                    <span>🍓</span> 딸기 전자동화 시스템
+                                </h3>
+
+                                <div className="space-y-4">
+                                    <div className="p-3 rounded-lg bg-white/5">
+                                        <div className="text-sm font-medium mb-2">🌱 재배 구역</div>
+                                        <p className="text-xs text-white/60">다층 수경재배 시스템에서 딸기가 자라고 있습니다. LED 조명이 최적 스펙트럼을 제공합니다.</p>
+                                    </div>
+
+                                    <div className="p-3 rounded-lg bg-white/5">
+                                        <div className="text-sm font-medium mb-2">🤖 수확 로봇</div>
+                                        <p className="text-xs text-white/60">AI 비전으로 익은 딸기를 감지하고 자동으로 수확합니다.</p>
+                                    </div>
+
+                                    <div className="p-3 rounded-lg bg-white/5">
+                                        <div className="text-sm font-medium mb-2">🔍 선별 라인</div>
+                                        <p className="text-xs text-white/60">컴퓨터 비전이 등급별로 자동 분류합니다. A/B/C 등급.</p>
+                                    </div>
+
+                                    <div className="p-3 rounded-lg bg-white/5">
+                                        <div className="text-sm font-medium mb-2">📦 포장 라인</div>
+                                        <p className="text-xs text-white/60">트레이 공급 → 딸기 충전 → 라벨링 → 밀봉 자동화.</p>
+                                    </div>
+
+                                    <div className="p-3 rounded-lg bg-white/5">
+                                        <div className="text-sm font-medium mb-2">📤 박스 포장</div>
+                                        <p className="text-xs text-white/60">로봇 암이 완제품을 박스에 담아 팔레트에 적재합니다.</p>
+                                    </div>
+
+                                    <div className="p-3 rounded-lg bg-white/5">
+                                        <div className="text-sm font-medium mb-2">🚚 물류 배송</div>
+                                        <p className="text-xs text-white/60">지게차가 팔레트를 트럭에 상차하고 배송됩니다.</p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-4 p-3 rounded-lg bg-gradient-to-r from-green-500/20 to-cyan-500/20 border border-green-500/30">
+                                    <div className="text-sm font-bold text-green-400">✨ 완전 자동화</div>
+                                    <p className="text-xs text-white/60 mt-1">씨앗부터 배송까지 100% 무인 운영 가능</p>
+                                </div>
+                            </div>
+
+                            {/* 3D Simulation Canvas */}
+                            <div className="flex-1 glass rounded-xl overflow-hidden relative">
+                                <div className="absolute top-4 left-4 z-10 glass rounded-lg px-4 py-2">
+                                    <div className="text-sm font-bold text-green-400">🍓 Strawberry Farm Full Automation</div>
+                                    <div className="text-xs text-white/60">실시간 시뮬레이션 진행 중</div>
+                                </div>
+
+                                <Canvas camera={{ position: [25, 15, 25], fov: 50 }}>
+                                    <Suspense fallback={null}>
+                                        <OrbitControls
+                                            enablePan
+                                            enableZoom
+                                            enableRotate
+                                            minDistance={10}
+                                            maxDistance={80}
+                                        />
+                                        <ambientLight intensity={0.4} />
+                                        <pointLight position={[20, 20, 20]} intensity={1} />
+                                        <pointLight position={[-20, 15, -20]} intensity={0.5} />
+                                        <directionalLight position={[10, 20, 10]} intensity={0.5} />
+
+                                        <FullAutomationSimulation
+                                            dimensions={farmDimensions}
+                                            simulationSpeed={1}
+                                        />
+
+                                        <Grid
+                                            args={[80, 80]}
+                                            cellSize={2}
+                                            cellThickness={0.5}
+                                            cellColor="#00ff8822"
+                                            sectionSize={10}
+                                            sectionThickness={1}
+                                            sectionColor="#00ff8844"
+                                        />
+                                        <Environment preset="warehouse" />
                                     </Suspense>
                                 </Canvas>
                             </div>
