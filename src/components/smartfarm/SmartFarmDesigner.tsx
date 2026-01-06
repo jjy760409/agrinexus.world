@@ -81,6 +81,7 @@ export default function SmartFarmDesigner() {
         { type: 'greenhouse' as const, label: '유리 온실', icon: '🏠' },
         { type: 'indoor' as const, label: '실내 농장', icon: '🏭' },
         { type: 'rooftop' as const, label: '옥상 농장', icon: '🌆' },
+        { type: 'underground' as const, label: '지하 농장', icon: '🔽' },
     ];
 
     return (
