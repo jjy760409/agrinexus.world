@@ -27,7 +27,7 @@ import BlockchainExchangePanel from './BlockchainExchangePanel';
 import NegotiationPanel from './NegotiationPanel';
 import FileUploadAnalyzer from '@/components/upload/FileUploadAnalyzer';
 
-type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'dna' | 'logistics' | 'hologram' | 'quantum' | 'blockchain' | 'negotiation' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
+type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'dna' | 'logistics' | 'hologram' | 'quantum' | 'blockchain' | 'negotiation' | 'telepathy' | 'biophoton' | 'chrono' | 'water' | 'rootai' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
 
 export default function SmartFarmDesigner() {
     const [activeTab, setActiveTab] = useState<DesignerTab>('design');
@@ -53,6 +53,11 @@ export default function SmartFarmDesigner() {
         { id: 'quantum' as const, label: '⚛️ 양자통신', icon: '🌐' },
         { id: 'blockchain' as const, label: '⛓️ 블록체인', icon: '💎' },
         { id: 'negotiation' as const, label: '🤖 AI협상', icon: '🤝' },
+        { id: 'telepathy' as const, label: '🔮 식물텔레파시', icon: '💭' },
+        { id: 'biophoton' as const, label: '✨ 생체광자', icon: '💫' },
+        { id: 'chrono' as const, label: '⏩ 시간농업', icon: '⏰' },
+        { id: 'water' as const, label: '💧 대기수분', icon: '🌫️' },
+        { id: 'rootai' as const, label: '🧠 뿌리AI', icon: '🌿' },
         { id: 'conversation' as const, label: '🌿 식물대화', icon: '💬' },
         { id: 'swarm' as const, label: '🤖 군집로봇', icon: '🐝' },
         { id: 'space' as const, label: '🚀 우주농업', icon: '🌌' },
@@ -667,6 +672,91 @@ export default function SmartFarmDesigner() {
                             className="h-full"
                         >
                             <NegotiationPanel />
+                        </motion.div>
+                    )}
+
+                    {/* Telepathy Tab */}
+                    {activeTab === 'telepathy' && (
+                        <motion.div key="telepathy" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full glass rounded-xl p-6">
+                            <div className="text-center py-12">
+                                <div className="text-8xl mb-6">🔮</div>
+                                <h2 className="text-3xl font-bold gradient-text mb-4">식물 텔레파시 네트워크</h2>
+                                <p className="text-white/60 max-w-2xl mx-auto mb-8">세계 최초 식물 간 양자 통신 & 공유 의식 시스템</p>
+                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+                                    <div className="bg-purple-500/20 border border-purple-500 rounded-xl p-4"><div className="text-3xl mb-2">🍄</div><div className="font-bold">균근 연결</div></div>
+                                    <div className="bg-pink-500/20 border border-pink-500 rounded-xl p-4"><div className="text-3xl mb-2">💭</div><div className="font-bold">공유 의식</div></div>
+                                    <div className="bg-cyan-500/20 border border-cyan-500 rounded-xl p-4"><div className="text-3xl mb-2">⚡</div><div className="font-bold">신호 전송</div></div>
+                                    <div className="bg-green-500/20 border border-green-500 rounded-xl p-4"><div className="text-3xl mb-2">🧠</div><div className="font-bold">집단 지능</div></div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Biophoton Tab */}
+                    {activeTab === 'biophoton' && (
+                        <motion.div key="biophoton" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full glass rounded-xl p-6">
+                            <div className="text-center py-12">
+                                <div className="text-8xl mb-6">✨</div>
+                                <h2 className="text-3xl font-bold gradient-text mb-4">생체광자 에너지 수확</h2>
+                                <p className="text-white/60 max-w-2xl mx-auto mb-8">세계 최초 식물 발광 에너지 수집 시스템</p>
+                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+                                    <div className="bg-yellow-500/20 border border-yellow-500 rounded-xl p-4"><div className="text-3xl mb-2">💫</div><div className="font-bold">광자 수집</div></div>
+                                    <div className="bg-green-500/20 border border-green-500 rounded-xl p-4"><div className="text-3xl mb-2">🔋</div><div className="font-bold">양자 배터리</div></div>
+                                    <div className="bg-blue-500/20 border border-blue-500 rounded-xl p-4"><div className="text-3xl mb-2">⚡</div><div className="font-bold">자가 발전</div></div>
+                                    <div className="bg-emerald-500/20 border border-emerald-500 rounded-xl p-4"><div className="text-3xl mb-2">🌍</div><div className="font-bold">탄소 상쇄</div></div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Chrono Tab */}
+                    {activeTab === 'chrono' && (
+                        <motion.div key="chrono" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full glass rounded-xl p-6">
+                            <div className="text-center py-12">
+                                <div className="text-8xl mb-6">⏩</div>
+                                <h2 className="text-3xl font-bold gradient-text mb-4">시간 농업 엔진</h2>
+                                <p className="text-white/60 max-w-2xl mx-auto mb-8">세계 최초 시간 조작 기반 성장 가속 시스템</p>
+                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+                                    <div className="bg-indigo-500/20 border border-indigo-500 rounded-xl p-4"><div className="text-3xl mb-2">⏱️</div><div className="font-bold">시간 가속</div></div>
+                                    <div className="bg-purple-500/20 border border-purple-500 rounded-xl p-4"><div className="text-3xl mb-2">📅</div><div className="font-bold">일주기 조절</div></div>
+                                    <div className="bg-green-500/20 border border-green-500 rounded-xl p-4"><div className="text-3xl mb-2">📈</div><div className="font-bold">수확량 증가</div></div>
+                                    <div className="bg-yellow-500/20 border border-yellow-500 rounded-xl p-4"><div className="text-3xl mb-2">💰</div><div className="font-bold">경제 이익</div></div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Water Tab */}
+                    {activeTab === 'water' && (
+                        <motion.div key="water" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full glass rounded-xl p-6">
+                            <div className="text-center py-12">
+                                <div className="text-8xl mb-6">💧</div>
+                                <h2 className="text-3xl font-bold gradient-text mb-4">대기 수분 생성기</h2>
+                                <p className="text-white/60 max-w-2xl mx-auto mb-8">세계 최초 나노 테크 대기 수분 수집 시스템</p>
+                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+                                    <div className="bg-blue-500/20 border border-blue-500 rounded-xl p-4"><div className="text-3xl mb-2">🌫️</div><div className="font-bold">나노 메쉬</div></div>
+                                    <div className="bg-cyan-500/20 border border-cyan-500 rounded-xl p-4"><div className="text-3xl mb-2">🧊</div><div className="font-bold">MOF 흡착</div></div>
+                                    <div className="bg-green-500/20 border border-green-500 rounded-xl p-4"><div className="text-3xl mb-2">☀️</div><div className="font-bold">태양광 구동</div></div>
+                                    <div className="bg-yellow-500/20 border border-yellow-500 rounded-xl p-4"><div className="text-3xl mb-2">🚿</div><div className="font-bold">스마트 관개</div></div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Root AI Tab */}
+                    {activeTab === 'rootai' && (
+                        <motion.div key="rootai" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full glass rounded-xl p-6">
+                            <div className="text-center py-12">
+                                <div className="text-8xl mb-6">🧠</div>
+                                <h2 className="text-3xl font-bold gradient-text mb-4">뿌리 AI 네트워크</h2>
+                                <p className="text-white/60 max-w-2xl mx-auto mb-8">세계 최초 지하 뿌리 집단 지능 시스템</p>
+                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+                                    <div className="bg-amber-500/20 border border-amber-500 rounded-xl p-4"><div className="text-3xl mb-2">🌿</div><div className="font-bold">뿌리 노드</div></div>
+                                    <div className="bg-green-500/20 border border-green-500 rounded-xl p-4"><div className="text-3xl mb-2">🔗</div><div className="font-bold">균근 연결</div></div>
+                                    <div className="bg-purple-500/20 border border-purple-500 rounded-xl p-4"><div className="text-3xl mb-2">🎯</div><div className="font-bold">양분 최적화</div></div>
+                                    <div className="bg-blue-500/20 border border-blue-500 rounded-xl p-4"><div className="text-3xl mb-2">⚡</div><div className="font-bold">AI 결정</div></div>
+                                </div>
+                            </div>
                         </motion.div>
                     )}
 
