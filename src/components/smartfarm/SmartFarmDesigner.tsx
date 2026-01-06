@@ -10,6 +10,7 @@ import EquipmentPanel from './EquipmentPanel';
 import AIAgentPanel from './AIAgentPanel';
 import SimulationPanel from './SimulationPanel';
 import Farm3DScene from './Farm3DScene';
+import TransparentFarm from './TransparentFarm';
 import FileUploadAnalyzer from '@/components/upload/FileUploadAnalyzer';
 
 type DesignerTab = 'design' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
@@ -332,10 +333,10 @@ export default function SmartFarmDesigner() {
                                         <ambientLight intensity={0.5} />
                                         <pointLight position={[10, 10, 10]} intensity={1} />
                                         <pointLight position={[-10, 10, -10]} intensity={0.5} />
-                                        <Farm3DScene
+                                        <TransparentFarm
                                             farmType={farmType}
                                             dimensions={farmDimensions}
-                                            equipment={selectedEquipment}
+                                            autoRotate={cameraView === 'free'}
                                         />
                                         <Grid
                                             args={[50, 50]}

@@ -260,7 +260,7 @@ export interface SeedVariety {
     name: string;
     koreanName: string;
     scientificName: string;
-    category: 'leafy' | 'herb' | 'fruit' | 'flower' | 'root' | 'microgreen';
+    category: 'leafy' | 'herb' | 'fruit' | 'flower' | 'root' | 'microgreen' | 'sprout';
     icon: string;
     growthDays: number;
     optimalTemp: { min: number; max: number };

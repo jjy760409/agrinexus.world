@@ -846,6 +846,337 @@ export const SEED_CATALOG: SeedVariety[] = [
             iron: 1, manganese: 0.2, zinc: 0.1,
             copper: 0.03, boron: 0.1, molybdenum: 0.02
         }
+    },
+    // 추가 작물들
+    {
+        id: 'seed-006',
+        name: 'Bell Pepper',
+        koreanName: '파프리카',
+        scientificName: 'Capsicum annuum',
+        category: 'fruit',
+        icon: '🫑',
+        growthDays: 75,
+        optimalTemp: { min: 20, max: 28 },
+        optimalHumidity: { min: 55, max: 75 },
+        optimalPH: { min: 5.8, max: 6.5 },
+        lightRequirement: 550,
+        photoperiod: 14,
+        yieldPerSquareMeter: 6.5,
+        difficulty: 'medium',
+        nutritionRequirements: {
+            nitrogen: 160, phosphorus: 55, potassium: 250,
+            calcium: 160, magnesium: 45, sulfur: 55,
+            iron: 2.8, manganese: 0.7, zinc: 0.28,
+            copper: 0.09, boron: 0.45, molybdenum: 0.05
+        }
+    },
+    {
+        id: 'seed-007',
+        name: 'Cucumber',
+        koreanName: '오이',
+        scientificName: 'Cucumis sativus',
+        category: 'fruit',
+        icon: '🥒',
+        growthDays: 55,
+        optimalTemp: { min: 22, max: 30 },
+        optimalHumidity: { min: 70, max: 85 },
+        optimalPH: { min: 5.5, max: 6.5 },
+        lightRequirement: 500,
+        photoperiod: 14,
+        yieldPerSquareMeter: 12,
+        difficulty: 'medium',
+        nutritionRequirements: {
+            nitrogen: 140, phosphorus: 45, potassium: 220,
+            calcium: 140, magnesium: 40, sulfur: 45,
+            iron: 2.2, manganese: 0.6, zinc: 0.22,
+            copper: 0.07, boron: 0.35, molybdenum: 0.04
+        }
+    },
+    {
+        id: 'seed-008',
+        name: 'Arugula',
+        koreanName: '루꼴라',
+        scientificName: 'Eruca vesicaria',
+        category: 'leafy',
+        icon: '🥗',
+        growthDays: 28,
+        optimalTemp: { min: 15, max: 22 },
+        optimalHumidity: { min: 55, max: 75 },
+        optimalPH: { min: 6.0, max: 7.0 },
+        lightRequirement: 350,
+        photoperiod: 14,
+        yieldPerSquareMeter: 3.0,
+        difficulty: 'easy',
+        nutritionRequirements: {
+            nitrogen: 130, phosphorus: 45, potassium: 170,
+            calcium: 130, magnesium: 35, sulfur: 45,
+            iron: 1.8, manganese: 0.45, zinc: 0.18,
+            copper: 0.05, boron: 0.25, molybdenum: 0.04
+        }
+    },
+    {
+        id: 'seed-009',
+        name: 'Spinach',
+        koreanName: '시금치',
+        scientificName: 'Spinacia oleracea',
+        category: 'leafy',
+        icon: '🥬',
+        growthDays: 40,
+        optimalTemp: { min: 12, max: 20 },
+        optimalHumidity: { min: 60, max: 80 },
+        optimalPH: { min: 6.0, max: 7.0 },
+        lightRequirement: 350,
+        photoperiod: 12,
+        yieldPerSquareMeter: 4.0,
+        difficulty: 'easy',
+        nutritionRequirements: {
+            nitrogen: 160, phosphorus: 50, potassium: 200,
+            calcium: 160, magnesium: 45, sulfur: 50,
+            iron: 2.5, manganese: 0.55, zinc: 0.2,
+            copper: 0.06, boron: 0.3, molybdenum: 0.05
+        }
+    },
+    {
+        id: 'seed-010',
+        name: 'Kale',
+        koreanName: '케일',
+        scientificName: 'Brassica oleracea var. acephala',
+        category: 'leafy',
+        icon: '🥗',
+        growthDays: 55,
+        optimalTemp: { min: 15, max: 24 },
+        optimalHumidity: { min: 55, max: 75 },
+        optimalPH: { min: 6.0, max: 7.0 },
+        lightRequirement: 400,
+        photoperiod: 14,
+        yieldPerSquareMeter: 3.5,
+        difficulty: 'easy',
+        nutritionRequirements: {
+            nitrogen: 150, phosphorus: 50, potassium: 190,
+            calcium: 150, magnesium: 40, sulfur: 50,
+            iron: 2.2, manganese: 0.5, zinc: 0.2,
+            copper: 0.05, boron: 0.3, molybdenum: 0.05
+        }
+    },
+    {
+        id: 'seed-011',
+        name: 'Mint',
+        koreanName: '민트',
+        scientificName: 'Mentha spicata',
+        category: 'herb',
+        icon: '🌿',
+        growthDays: 30,
+        optimalTemp: { min: 18, max: 28 },
+        optimalHumidity: { min: 55, max: 75 },
+        optimalPH: { min: 5.5, max: 7.0 },
+        lightRequirement: 400,
+        photoperiod: 14,
+        yieldPerSquareMeter: 2.0,
+        difficulty: 'easy',
+        nutritionRequirements: {
+            nitrogen: 100, phosphorus: 35, potassium: 150,
+            calcium: 90, magnesium: 25, sulfur: 35,
+            iron: 1.5, manganese: 0.35, zinc: 0.12,
+            copper: 0.04, boron: 0.18, molybdenum: 0.03
+        }
+    },
+    {
+        id: 'seed-012',
+        name: 'Cilantro',
+        koreanName: '고수',
+        scientificName: 'Coriandrum sativum',
+        category: 'herb',
+        icon: '🌿',
+        growthDays: 25,
+        optimalTemp: { min: 15, max: 25 },
+        optimalHumidity: { min: 50, max: 70 },
+        optimalPH: { min: 6.0, max: 7.0 },
+        lightRequirement: 350,
+        photoperiod: 12,
+        yieldPerSquareMeter: 1.8,
+        difficulty: 'medium',
+        nutritionRequirements: {
+            nitrogen: 90, phosphorus: 30, potassium: 140,
+            calcium: 80, magnesium: 22, sulfur: 30,
+            iron: 1.3, manganese: 0.3, zinc: 0.1,
+            copper: 0.03, boron: 0.15, molybdenum: 0.02
+        }
+    },
+    {
+        id: 'seed-013',
+        name: 'Bok Choy',
+        koreanName: '청경채',
+        scientificName: 'Brassica rapa subsp. chinensis',
+        category: 'leafy',
+        icon: '🥬',
+        growthDays: 35,
+        optimalTemp: { min: 15, max: 24 },
+        optimalHumidity: { min: 60, max: 80 },
+        optimalPH: { min: 6.0, max: 7.5 },
+        lightRequirement: 350,
+        photoperiod: 14,
+        yieldPerSquareMeter: 4.2,
+        difficulty: 'easy',
+        nutritionRequirements: {
+            nitrogen: 140, phosphorus: 45, potassium: 180,
+            calcium: 140, magnesium: 38, sulfur: 45,
+            iron: 2.0, manganese: 0.45, zinc: 0.18,
+            copper: 0.05, boron: 0.28, molybdenum: 0.04
+        }
+    },
+    {
+        id: 'seed-014',
+        name: 'Swiss Chard',
+        koreanName: '근대',
+        scientificName: 'Beta vulgaris subsp. vulgaris',
+        category: 'leafy',
+        icon: '🥬',
+        growthDays: 50,
+        optimalTemp: { min: 15, max: 24 },
+        optimalHumidity: { min: 55, max: 75 },
+        optimalPH: { min: 6.0, max: 7.0 },
+        lightRequirement: 380,
+        photoperiod: 14,
+        yieldPerSquareMeter: 3.8,
+        difficulty: 'easy',
+        nutritionRequirements: {
+            nitrogen: 145, phosphorus: 48, potassium: 185,
+            calcium: 145, magnesium: 40, sulfur: 48,
+            iron: 2.1, manganese: 0.48, zinc: 0.19,
+            copper: 0.05, boron: 0.28, molybdenum: 0.04
+        }
+    },
+    {
+        id: 'seed-015',
+        name: 'Watercress',
+        koreanName: '물냉이',
+        scientificName: 'Nasturtium officinale',
+        category: 'leafy',
+        icon: '🌱',
+        growthDays: 21,
+        optimalTemp: { min: 12, max: 20 },
+        optimalHumidity: { min: 70, max: 90 },
+        optimalPH: { min: 6.5, max: 7.5 },
+        lightRequirement: 300,
+        photoperiod: 12,
+        yieldPerSquareMeter: 2.5,
+        difficulty: 'medium',
+        nutritionRequirements: {
+            nitrogen: 110, phosphorus: 35, potassium: 160,
+            calcium: 110, magnesium: 28, sulfur: 35,
+            iron: 1.6, manganese: 0.38, zinc: 0.14,
+            copper: 0.04, boron: 0.2, molybdenum: 0.03
+        }
+    },
+    {
+        id: 'seed-016',
+        name: 'Chives',
+        koreanName: '차이브',
+        scientificName: 'Allium schoenoprasum',
+        category: 'herb',
+        icon: '🌿',
+        growthDays: 60,
+        optimalTemp: { min: 15, max: 25 },
+        optimalHumidity: { min: 50, max: 70 },
+        optimalPH: { min: 6.0, max: 7.0 },
+        lightRequirement: 380,
+        photoperiod: 14,
+        yieldPerSquareMeter: 1.5,
+        difficulty: 'easy',
+        nutritionRequirements: {
+            nitrogen: 85, phosphorus: 28, potassium: 130,
+            calcium: 75, magnesium: 20, sulfur: 30,
+            iron: 1.2, manganese: 0.28, zinc: 0.1,
+            copper: 0.03, boron: 0.14, molybdenum: 0.02
+        }
+    },
+    {
+        id: 'seed-017',
+        name: 'Parsley',
+        koreanName: '파슬리',
+        scientificName: 'Petroselinum crispum',
+        category: 'herb',
+        icon: '🌿',
+        growthDays: 70,
+        optimalTemp: { min: 15, max: 25 },
+        optimalHumidity: { min: 55, max: 75 },
+        optimalPH: { min: 5.5, max: 6.5 },
+        lightRequirement: 400,
+        photoperiod: 14,
+        yieldPerSquareMeter: 2.2,
+        difficulty: 'medium',
+        nutritionRequirements: {
+            nitrogen: 115, phosphorus: 38, potassium: 165,
+            calcium: 95, magnesium: 28, sulfur: 38,
+            iron: 1.8, manganese: 0.38, zinc: 0.14,
+            copper: 0.04, boron: 0.2, molybdenum: 0.03
+        }
+    },
+    {
+        id: 'seed-018',
+        name: 'Dill',
+        koreanName: '딜',
+        scientificName: 'Anethum graveolens',
+        category: 'herb',
+        icon: '🌿',
+        growthDays: 40,
+        optimalTemp: { min: 15, max: 25 },
+        optimalHumidity: { min: 50, max: 70 },
+        optimalPH: { min: 5.5, max: 6.5 },
+        lightRequirement: 420,
+        photoperiod: 14,
+        yieldPerSquareMeter: 1.8,
+        difficulty: 'easy',
+        nutritionRequirements: {
+            nitrogen: 95, phosphorus: 32, potassium: 145,
+            calcium: 85, magnesium: 24, sulfur: 32,
+            iron: 1.4, manganese: 0.32, zinc: 0.12,
+            copper: 0.04, boron: 0.16, molybdenum: 0.02
+        }
+    },
+    {
+        id: 'seed-019',
+        name: 'Radish',
+        koreanName: '래디시',
+        scientificName: 'Raphanus sativus',
+        category: 'root',
+        icon: '🔴',
+        growthDays: 28,
+        optimalTemp: { min: 15, max: 22 },
+        optimalHumidity: { min: 55, max: 75 },
+        optimalPH: { min: 6.0, max: 7.0 },
+        lightRequirement: 350,
+        photoperiod: 12,
+        yieldPerSquareMeter: 5.5,
+        difficulty: 'easy',
+        nutritionRequirements: {
+            nitrogen: 100, phosphorus: 35, potassium: 160,
+            calcium: 100, magnesium: 28, sulfur: 40,
+            iron: 1.5, manganese: 0.35, zinc: 0.14,
+            copper: 0.04, boron: 0.22, molybdenum: 0.03
+        }
+    },
+    {
+        id: 'seed-020',
+        name: 'Bean Sprouts',
+        koreanName: '콩나물',
+        scientificName: 'Vigna radiata',
+        category: 'sprout',
+        icon: '🌱',
+        growthDays: 7,
+        optimalTemp: { min: 20, max: 28 },
+        optimalHumidity: { min: 70, max: 90 },
+        optimalPH: { min: 6.0, max: 7.0 },
+        lightRequirement: 0,
+        photoperiod: 0,
+        yieldPerSquareMeter: 8.0,
+        difficulty: 'easy',
+        nutritionRequirements: {
+            nitrogen: 0, phosphorus: 0, potassium: 0,
+            calcium: 0, magnesium: 0, sulfur: 0,
+            iron: 0, manganese: 0, zinc: 0,
+            copper: 0, boron: 0, molybdenum: 0
+        }
     }
 ];
 
