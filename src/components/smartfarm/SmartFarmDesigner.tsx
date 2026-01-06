@@ -14,9 +14,11 @@ import TransparentFarm from './TransparentFarm';
 import FullAutomationSimulation from './FullAutomationSimulation';
 import CropInfoPanel from './CropInfoPanel';
 import EquipmentInfoPanel from './EquipmentInfoPanel';
+import AIDashboard from './AIDashboard';
+import TraceabilityPanel from './TraceabilityPanel';
 import FileUploadAnalyzer from '@/components/upload/FileUploadAnalyzer';
 
-type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
+type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
 
 export default function SmartFarmDesigner() {
     const [activeTab, setActiveTab] = useState<DesignerTab>('design');
@@ -40,6 +42,8 @@ export default function SmartFarmDesigner() {
         { id: 'automation' as const, label: '🍓 전자동화', icon: '🏭' },
         { id: 'crops' as const, label: '작물 정보', icon: '🌱' },
         { id: 'systems' as const, label: '설비 시스템', icon: '⚡' },
+        { id: 'ai' as const, label: 'AI 분석', icon: '🧠' },
+        { id: 'traceability' as const, label: '이력추적', icon: '⛓️' },
         { id: 'upload' as const, label: '파일 업로드', icon: '📁' },
         { id: 'equipment' as const, label: '장비 설정', icon: '⚙️' },
         { id: 'agents' as const, label: 'AI 에이전트', icon: '🤖' },
@@ -484,6 +488,46 @@ export default function SmartFarmDesigner() {
                             <EquipmentInfoPanel
                                 farmArea={growingArea}
                                 onEquipmentSelect={(eq) => console.log('Selected equipment:', eq)}
+                            />
+                        </motion.div>
+                    )}
+
+                    {/* AI Dashboard Tab */}
+                    {activeTab === 'ai' && (
+                        <motion.div
+                            key="ai"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="h-full"
+                        >
+                            <AIDashboard
+                                farmProfile={{
+                                    location: { country: 'Korea', region: 'Seoul', climate: 'temperate', latitude: 37.5, longitude: 127 },
+                                    facility: { type: farmType, area: growingArea, height: farmDimensions.height, floors: farmDimensions.floors, existingEquipment: [] },
+                                    budget: { initial: 100000000, monthly: 5000000, targetROI: 20, paybackMonths: 36 },
+                                    experience: 'intermediate',
+                                    goals: ['profit', 'sustainability'],
+                                    preferences: { cropTypes: [], automationLevel: 'high', organicCertification: true, exportFocus: false },
+                                    constraints: { laborAvailable: 2, electricityLimit: 50, waterLimit: 5000 }
+                                }}
+                                selectedCropId="strawberry"
+                            />
+                        </motion.div>
+                    )}
+
+                    {/* Traceability Tab */}
+                    {activeTab === 'traceability' && (
+                        <motion.div
+                            key="traceability"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="h-full"
+                        >
+                            <TraceabilityPanel
+                                batchId="BATCH-2026-001"
+                                cropType="딸기"
                             />
                         </motion.div>
                     )}
