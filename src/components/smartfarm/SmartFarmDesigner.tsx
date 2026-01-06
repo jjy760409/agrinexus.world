@@ -16,9 +16,12 @@ import CropInfoPanel from './CropInfoPanel';
 import EquipmentInfoPanel from './EquipmentInfoPanel';
 import AIDashboard from './AIDashboard';
 import TraceabilityPanel from './TraceabilityPanel';
+import PlantConversationPanel from './PlantConversationPanel';
+import SwarmRoboticsPanel from './SwarmRoboticsPanel';
+import SpaceAgriculturePanel from './SpaceAgriculturePanel';
 import FileUploadAnalyzer from '@/components/upload/FileUploadAnalyzer';
 
-type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
+type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
 
 export default function SmartFarmDesigner() {
     const [activeTab, setActiveTab] = useState<DesignerTab>('design');
@@ -40,6 +43,9 @@ export default function SmartFarmDesigner() {
     const tabs = [
         { id: 'design' as const, label: '3D 설계', icon: '🏗️' },
         { id: 'automation' as const, label: '🍓 전자동화', icon: '🏭' },
+        { id: 'conversation' as const, label: '🌿 식물대화', icon: '💬' },
+        { id: 'swarm' as const, label: '🤖 군집로봇', icon: '🐝' },
+        { id: 'space' as const, label: '🚀 우주농업', icon: '🌌' },
         { id: 'crops' as const, label: '작물 정보', icon: '🌱' },
         { id: 'systems' as const, label: '설비 시스템', icon: '⚡' },
         { id: 'ai' as const, label: 'AI 분석', icon: '🧠' },
@@ -529,6 +535,48 @@ export default function SmartFarmDesigner() {
                                 batchId="BATCH-2026-001"
                                 cropType="딸기"
                             />
+                        </motion.div>
+                    )}
+
+                    {/* Plant Conversation Tab - 세계 최초 식물 대화 */}
+                    {activeTab === 'conversation' && (
+                        <motion.div
+                            key="conversation"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="h-full"
+                        >
+                            <PlantConversationPanel
+                                plantId="plant-001"
+                                cropType="딸기"
+                            />
+                        </motion.div>
+                    )}
+
+                    {/* Swarm Robotics Tab - 군집 마이크로 로봇 */}
+                    {activeTab === 'swarm' && (
+                        <motion.div
+                            key="swarm"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="h-full"
+                        >
+                            <SwarmRoboticsPanel />
+                        </motion.div>
+                    )}
+
+                    {/* Space Agriculture Tab - 우주 농업 */}
+                    {activeTab === 'space' && (
+                        <motion.div
+                            key="space"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="h-full"
+                        >
+                            <SpaceAgriculturePanel />
                         </motion.div>
                     )}
 
