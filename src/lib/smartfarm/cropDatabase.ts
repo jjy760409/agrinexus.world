@@ -948,13 +948,18 @@ export function getCropsByCategory(category: CropCategory): CropData[] {
     return CROP_DATABASE.filter(crop => crop.category === category);
 }
 
-export function compareCrops(cropIds: string[]): {
+export interface CropComparisonResult {
     crops: CropData[];
-    comparison: Record<string, any>
-} {
+    profitability: { name: string; roi: number; margin: number; payback: number }[];
+    difficulty: { name: string; level: string; cycleDays: number }[];
+    requirements: { name: string; temp: number; light: number; ec: number }[];
+}
+
+export function compareCrops(cropIds: string[]): CropComparisonResult {
     const crops = cropIds.map(id => getCropById(id)).filter(Boolean) as CropData[];
 
-    const comparison = {
+    return {
+        crops,
         profitability: crops.map(c => ({
             name: c.koreanName,
             roi: c.economics.roi,
@@ -973,8 +978,6 @@ export function compareCrops(cropIds: string[]): {
             ec: c.cultivation.ec.optimal
         }))
     };
-
-    return { crops, comparison };
 }
 
 export function calculateProjectedRevenue(

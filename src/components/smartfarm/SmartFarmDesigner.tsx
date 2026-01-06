@@ -12,9 +12,11 @@ import SimulationPanel from './SimulationPanel';
 import Farm3DScene from './Farm3DScene';
 import TransparentFarm from './TransparentFarm';
 import FullAutomationSimulation from './FullAutomationSimulation';
+import CropInfoPanel from './CropInfoPanel';
+import EquipmentInfoPanel from './EquipmentInfoPanel';
 import FileUploadAnalyzer from '@/components/upload/FileUploadAnalyzer';
 
-type DesignerTab = 'design' | 'automation' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
+type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
 
 export default function SmartFarmDesigner() {
     const [activeTab, setActiveTab] = useState<DesignerTab>('design');
@@ -36,6 +38,8 @@ export default function SmartFarmDesigner() {
     const tabs = [
         { id: 'design' as const, label: '3D 설계', icon: '🏗️' },
         { id: 'automation' as const, label: '🍓 전자동화', icon: '🏭' },
+        { id: 'crops' as const, label: '작물 정보', icon: '🌱' },
+        { id: 'systems' as const, label: '설비 시스템', icon: '⚡' },
         { id: 'upload' as const, label: '파일 업로드', icon: '📁' },
         { id: 'equipment' as const, label: '장비 설정', icon: '⚙️' },
         { id: 'agents' as const, label: 'AI 에이전트', icon: '🤖' },
@@ -449,6 +453,38 @@ export default function SmartFarmDesigner() {
                                     </Suspense>
                                 </Canvas>
                             </div>
+                        </motion.div>
+                    )}
+
+                    {/* Crops Info Tab */}
+                    {activeTab === 'crops' && (
+                        <motion.div
+                            key="crops"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="h-full"
+                        >
+                            <CropInfoPanel
+                                farmArea={growingArea}
+                                onCropSelect={(crop) => console.log('Selected crop:', crop)}
+                            />
+                        </motion.div>
+                    )}
+
+                    {/* Systems Info Tab */}
+                    {activeTab === 'systems' && (
+                        <motion.div
+                            key="systems"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="h-full"
+                        >
+                            <EquipmentInfoPanel
+                                farmArea={growingArea}
+                                onEquipmentSelect={(eq) => console.log('Selected equipment:', eq)}
+                            />
                         </motion.div>
                     )}
 
