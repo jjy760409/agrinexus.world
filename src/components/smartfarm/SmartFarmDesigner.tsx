@@ -26,8 +26,9 @@ import QuantumNetworkPanel from './QuantumNetworkPanel';
 import BlockchainExchangePanel from './BlockchainExchangePanel';
 import NegotiationPanel from './NegotiationPanel';
 import FileUploadAnalyzer from '@/components/upload/FileUploadAnalyzer';
+import SuperAgentPanel from './SuperAgentPanel';
 
-type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'dna' | 'logistics' | 'hologram' | 'quantum' | 'blockchain' | 'negotiation' | 'telepathy' | 'biophoton' | 'chrono' | 'water' | 'rootai' | 'gravity' | 'emotion' | 'molecular' | 'bioelectric' | 'weathereng' | 'seedopt' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
+type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'dna' | 'logistics' | 'hologram' | 'quantum' | 'blockchain' | 'negotiation' | 'telepathy' | 'biophoton' | 'chrono' | 'water' | 'rootai' | 'gravity' | 'emotion' | 'molecular' | 'bioelectric' | 'weathereng' | 'seedopt' | 'superagent' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
 
 export default function SmartFarmDesigner() {
     const [activeTab, setActiveTab] = useState<DesignerTab>('design');
@@ -64,6 +65,7 @@ export default function SmartFarmDesigner() {
         { id: 'bioelectric' as const, label: '⚡ 생체전기', icon: '🔋' },
         { id: 'weathereng' as const, label: '🌤️ 기상공학', icon: '☁️' },
         { id: 'seedopt' as const, label: '🌱 양자종자', icon: '✨' },
+        { id: 'superagent' as const, label: '🦸 슈퍼에이전트', icon: '🤖' },
         { id: 'conversation' as const, label: '🌿 식물대화', icon: '💬' },
         { id: 'swarm' as const, label: '🤖 군집로봇', icon: '🐝' },
         { id: 'space' as const, label: '🚀 우주농업', icon: '🌌' },
@@ -865,6 +867,13 @@ export default function SmartFarmDesigner() {
                                     <div className="bg-green-500/20 border border-green-500 rounded-xl p-4"><div className="text-3xl mb-2">✨</div><div className="font-bold">잠재력 극대화</div></div>
                                 </div>
                             </div>
+                        </motion.div>
+                    )}
+
+                    {/* Super Agent Tab */}
+                    {activeTab === 'superagent' && (
+                        <motion.div key="superagent" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full">
+                            <SuperAgentPanel />
                         </motion.div>
                     )}
 
