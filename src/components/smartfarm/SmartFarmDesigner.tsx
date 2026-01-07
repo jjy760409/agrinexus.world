@@ -49,42 +49,87 @@ export default function SmartFarmDesigner() {
     const activeAgents = AI_AGENTS.filter(a => a.status === 'active').length;
     const growingArea = farmDimensions.width * farmDimensions.length * farmDimensions.floors;
 
-    const tabs = [
-        { id: 'design' as const, label: '3D 설계', icon: '🏗️' },
-        { id: 'automation' as const, label: '🍓 전자동화', icon: '🏭' },
-        { id: 'hologram' as const, label: '🔮 홀로그램', icon: '✨' },
-        { id: 'quantum' as const, label: '⚛️ 양자통신', icon: '🌐' },
-        { id: 'blockchain' as const, label: '⛓️ 블록체인', icon: '💎' },
-        { id: 'negotiation' as const, label: '🤖 AI협상', icon: '🤝' },
-        { id: 'telepathy' as const, label: '🔮 식물텔레파시', icon: '💭' },
-        { id: 'biophoton' as const, label: '✨ 생체광자', icon: '💫' },
-        { id: 'chrono' as const, label: '⏩ 시간농업', icon: '⏰' },
-        { id: 'water' as const, label: '💧 대기수분', icon: '🌫️' },
-        { id: 'rootai' as const, label: '🧠 뿌리AI', icon: '🌿' },
-        { id: 'gravity' as const, label: '🌍 중력제어', icon: '🚀' },
-        { id: 'emotion' as const, label: '💖 식물감정', icon: '😊' },
-        { id: 'molecular' as const, label: '⚗️ 분자조립', icon: '🔬' },
-        { id: 'bioelectric' as const, label: '⚡ 생체전기', icon: '🔋' },
-        { id: 'weathereng' as const, label: '🌤️ 기상공학', icon: '☁️' },
-        { id: 'seedopt' as const, label: '🌱 양자종자', icon: '✨' },
-        { id: 'superagent' as const, label: '🦸 슈퍼에이전트', icon: '🤖' },
-        { id: 'superintel' as const, label: '🧠 초지능검증', icon: '👑' },
-        { id: 'soilless' as const, label: '💧 무토양재배', icon: '🌿' },
-        { id: 'conversation' as const, label: '🌿 식물대화', icon: '💬' },
-        { id: 'swarm' as const, label: '🤖 군집로봇', icon: '🐝' },
-        { id: 'space' as const, label: '🚀 우주농업', icon: '🌌' },
-        { id: 'dna' as const, label: '🧬 DNA편집', icon: '✂️' },
-        { id: 'logistics' as const, label: '🚚 글로벌물류', icon: '📦' },
-        { id: 'crops' as const, label: '작물 정보', icon: '🌱' },
-        { id: 'systems' as const, label: '설비 시스템', icon: '⚡' },
-        { id: 'ai' as const, label: 'AI 분석', icon: '🧠' },
-        { id: 'traceability' as const, label: '이력추적', icon: '⛓️' },
-        { id: 'upload' as const, label: '파일 업로드', icon: '📁' },
-        { id: 'equipment' as const, label: '장비 설정', icon: '⚙️' },
-        { id: 'agents' as const, label: 'AI 에이전트', icon: '🤖' },
-        { id: 'simulation' as const, label: '시뮬레이션', icon: '📊' },
-        { id: 'whitepaper' as const, label: '백서', icon: '📄' },
+    // Tab categories for organized navigation
+    const tabCategories = [
+        {
+            name: '🎨 설계',
+            color: 'from-blue-500 to-cyan-500',
+            tabs: [
+                { id: 'design' as const, label: '3D 설계', icon: '🏗️' },
+                { id: 'automation' as const, label: '전자동화', icon: '🏭' },
+                { id: 'equipment' as const, label: '장비 설정', icon: '⚙️' },
+                { id: 'upload' as const, label: '파일 업로드', icon: '📁' },
+            ]
+        },
+        {
+            name: '🌿 재배',
+            color: 'from-green-500 to-emerald-500',
+            tabs: [
+                { id: 'soilless' as const, label: '무토양재배', icon: '💧' },
+                { id: 'crops' as const, label: '작물 정보', icon: '🌱' },
+                { id: 'seedopt' as const, label: '양자종자', icon: '✨' },
+                { id: 'dna' as const, label: 'DNA편집', icon: '🧬' },
+            ]
+        },
+        {
+            name: '🧠 AI/에이전트',
+            color: 'from-purple-500 to-pink-500',
+            tabs: [
+                { id: 'superagent' as const, label: '슈퍼에이전트', icon: '🦸' },
+                { id: 'superintel' as const, label: '초지능검증', icon: '👑' },
+                { id: 'agents' as const, label: 'AI 에이전트', icon: '🤖' },
+                { id: 'ai' as const, label: 'AI 분석', icon: '🧠' },
+                { id: 'negotiation' as const, label: 'AI협상', icon: '🤝' },
+            ]
+        },
+        {
+            name: '⚡ 첨단기술',
+            color: 'from-yellow-500 to-orange-500',
+            tabs: [
+                { id: 'quantum' as const, label: '양자통신', icon: '⚛️' },
+                { id: 'hologram' as const, label: '홀로그램', icon: '🔮' },
+                { id: 'telepathy' as const, label: '식물텔레파시', icon: '💭' },
+                { id: 'biophoton' as const, label: '생체광자', icon: '✨' },
+                { id: 'gravity' as const, label: '중력제어', icon: '🌍' },
+                { id: 'molecular' as const, label: '분자조립', icon: '⚗️' },
+            ]
+        },
+        {
+            name: '🌍 환경',
+            color: 'from-cyan-500 to-teal-500',
+            tabs: [
+                { id: 'weathereng' as const, label: '기상공학', icon: '🌤️' },
+                { id: 'water' as const, label: '대기수분', icon: '💧' },
+                { id: 'bioelectric' as const, label: '생체전기', icon: '⚡' },
+                { id: 'chrono' as const, label: '시간농업', icon: '⏩' },
+                { id: 'rootai' as const, label: '뿌리AI', icon: '🧠' },
+                { id: 'emotion' as const, label: '식물감정', icon: '💖' },
+            ]
+        },
+        {
+            name: '🚀 확장',
+            color: 'from-red-500 to-rose-500',
+            tabs: [
+                { id: 'space' as const, label: '우주농업', icon: '🚀' },
+                { id: 'swarm' as const, label: '군집로봇', icon: '🐝' },
+                { id: 'logistics' as const, label: '글로벌물류', icon: '🚚' },
+                { id: 'blockchain' as const, label: '블록체인', icon: '⛓️' },
+                { id: 'conversation' as const, label: '식물대화', icon: '🌿' },
+                { id: 'traceability' as const, label: '이력추적', icon: '⛓️' },
+            ]
+        },
+        {
+            name: '📊 분석',
+            color: 'from-indigo-500 to-blue-500',
+            tabs: [
+                { id: 'simulation' as const, label: '시뮬레이션', icon: '📊' },
+                { id: 'systems' as const, label: '설비 시스템', icon: '⚡' },
+                { id: 'whitepaper' as const, label: '백서', icon: '📄' },
+            ]
+        }
     ];
+
+    const [expandedCategory, setExpandedCategory] = useState<string | null>('🎨 설계');
 
     // Camera presets for 3D view
     const cameraPresets = [
@@ -185,22 +230,49 @@ export default function SmartFarmDesigner() {
                     </div>
                 </div>
 
-                {/* Tabs */}
+                {/* Categorized Tabs */}
                 <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
-                    {tabs.map(tab => (
-                        <motion.button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
-                            className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all flex items-center gap-2 ${activeTab === tab.id
-                                ? 'bg-gradient-to-r from-[var(--primary-green)] to-[var(--primary-cyan)] text-[var(--bg-dark)]'
-                                : 'bg-white/5 text-white/70 hover:bg-white/10'
-                                }`}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                        >
-                            <span>{tab.icon}</span>
-                            {tab.label}
-                        </motion.button>
+                    {tabCategories.map(category => (
+                        <div key={category.name} className="relative group">
+                            <motion.button
+                                onClick={() => setExpandedCategory(expandedCategory === category.name ? null : category.name)}
+                                className={`px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all flex items-center gap-2 border ${expandedCategory === category.name || category.tabs.some(t => t.id === activeTab)
+                                        ? `bg-gradient-to-r ${category.color} text-white border-transparent shadow-lg`
+                                        : 'bg-white/5 text-white/70 hover:bg-white/10 border-white/10'
+                                    }`}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                            >
+                                {category.name}
+                                <span className="text-xs opacity-60">{category.tabs.length}</span>
+                            </motion.button>
+                            {/* Dropdown */}
+                            <AnimatePresence>
+                                {expandedCategory === category.name && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -10 }}
+                                        className="absolute top-full left-0 mt-2 z-50 min-w-[180px] bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden"
+                                    >
+                                        {category.tabs.map(tab => (
+                                            <motion.button
+                                                key={tab.id}
+                                                onClick={() => { setActiveTab(tab.id); setExpandedCategory(null); }}
+                                                className={`w-full px-4 py-2.5 text-left text-sm flex items-center gap-3 transition-all ${activeTab === tab.id
+                                                        ? `bg-gradient-to-r ${category.color} text-white font-semibold`
+                                                        : 'text-white/70 hover:bg-white/10 hover:text-white'
+                                                    }`}
+                                                whileHover={{ x: 5 }}
+                                            >
+                                                <span className="text-lg">{tab.icon}</span>
+                                                {tab.label}
+                                            </motion.button>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
                     ))}
                 </div>
             </div>
