@@ -27,7 +27,7 @@ import BlockchainExchangePanel from './BlockchainExchangePanel';
 import NegotiationPanel from './NegotiationPanel';
 import FileUploadAnalyzer from '@/components/upload/FileUploadAnalyzer';
 
-type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'dna' | 'logistics' | 'hologram' | 'quantum' | 'blockchain' | 'negotiation' | 'telepathy' | 'biophoton' | 'chrono' | 'water' | 'rootai' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
+type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'dna' | 'logistics' | 'hologram' | 'quantum' | 'blockchain' | 'negotiation' | 'telepathy' | 'biophoton' | 'chrono' | 'water' | 'rootai' | 'gravity' | 'emotion' | 'molecular' | 'bioelectric' | 'weathereng' | 'seedopt' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
 
 export default function SmartFarmDesigner() {
     const [activeTab, setActiveTab] = useState<DesignerTab>('design');
@@ -58,6 +58,12 @@ export default function SmartFarmDesigner() {
         { id: 'chrono' as const, label: '⏩ 시간농업', icon: '⏰' },
         { id: 'water' as const, label: '💧 대기수분', icon: '🌫️' },
         { id: 'rootai' as const, label: '🧠 뿌리AI', icon: '🌿' },
+        { id: 'gravity' as const, label: '🌍 중력제어', icon: '🚀' },
+        { id: 'emotion' as const, label: '💖 식물감정', icon: '😊' },
+        { id: 'molecular' as const, label: '⚗️ 분자조립', icon: '🔬' },
+        { id: 'bioelectric' as const, label: '⚡ 생체전기', icon: '🔋' },
+        { id: 'weathereng' as const, label: '🌤️ 기상공학', icon: '☁️' },
+        { id: 'seedopt' as const, label: '🌱 양자종자', icon: '✨' },
         { id: 'conversation' as const, label: '🌿 식물대화', icon: '💬' },
         { id: 'swarm' as const, label: '🤖 군집로봇', icon: '🐝' },
         { id: 'space' as const, label: '🚀 우주농업', icon: '🌌' },
@@ -755,6 +761,108 @@ export default function SmartFarmDesigner() {
                                     <div className="bg-green-500/20 border border-green-500 rounded-xl p-4"><div className="text-3xl mb-2">🔗</div><div className="font-bold">균근 연결</div></div>
                                     <div className="bg-purple-500/20 border border-purple-500 rounded-xl p-4"><div className="text-3xl mb-2">🎯</div><div className="font-bold">양분 최적화</div></div>
                                     <div className="bg-blue-500/20 border border-blue-500 rounded-xl p-4"><div className="text-3xl mb-2">⚡</div><div className="font-bold">AI 결정</div></div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Gravity Tab */}
+                    {activeTab === 'gravity' && (
+                        <motion.div key="gravity" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full glass rounded-xl p-6">
+                            <div className="text-center py-12">
+                                <div className="text-8xl mb-6">🌍</div>
+                                <h2 className="text-3xl font-bold gradient-text mb-4">중력 제어 농업</h2>
+                                <p className="text-white/60 max-w-2xl mx-auto mb-8">세계 최초 중력 조작 기반 작물 성장 최적화</p>
+                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+                                    <div className="bg-blue-500/20 border border-blue-500 rounded-xl p-4"><div className="text-3xl mb-2">🌙</div><div className="font-bold">0.3g 미세중력</div></div>
+                                    <div className="bg-green-500/20 border border-green-500 rounded-xl p-4"><div className="text-3xl mb-2">⬇️</div><div className="font-bold">0.5g 저중력</div></div>
+                                    <div className="bg-yellow-500/20 border border-yellow-500 rounded-xl p-4"><div className="text-3xl mb-2">🌍</div><div className="font-bold">1.0g 표준</div></div>
+                                    <div className="bg-red-500/20 border border-red-500 rounded-xl p-4"><div className="text-3xl mb-2">⬆️</div><div className="font-bold">1.5g 고중력</div></div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Emotion Tab */}
+                    {activeTab === 'emotion' && (
+                        <motion.div key="emotion" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full glass rounded-xl p-6">
+                            <div className="text-center py-12">
+                                <div className="text-8xl mb-6">💖</div>
+                                <h2 className="text-3xl font-bold gradient-text mb-4">식물 감정 AI</h2>
+                                <p className="text-white/60 max-w-2xl mx-auto mb-8">세계 최초 식물 감정 인식 및 대화 시스템</p>
+                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+                                    <div className="bg-pink-500/20 border border-pink-500 rounded-xl p-4"><div className="text-3xl mb-2">😊</div><div className="font-bold">기쁨</div></div>
+                                    <div className="bg-purple-500/20 border border-purple-500 rounded-xl p-4"><div className="text-3xl mb-2">😌</div><div className="font-bold">만족</div></div>
+                                    <div className="bg-blue-500/20 border border-blue-500 rounded-xl p-4"><div className="text-3xl mb-2">🤔</div><div className="font-bold">호기심</div></div>
+                                    <div className="bg-green-500/20 border border-green-500 rounded-xl p-4"><div className="text-3xl mb-2">💬</div><div className="font-bold">대화</div></div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Molecular Tab */}
+                    {activeTab === 'molecular' && (
+                        <motion.div key="molecular" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full glass rounded-xl p-6">
+                            <div className="text-center py-12">
+                                <div className="text-8xl mb-6">⚗️</div>
+                                <h2 className="text-3xl font-bold gradient-text mb-4">분자 조립기</h2>
+                                <p className="text-white/60 max-w-2xl mx-auto mb-8">세계 최초 나노 수준 영양소 조립 시스템</p>
+                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+                                    <div className="bg-emerald-500/20 border border-emerald-500 rounded-xl p-4"><div className="text-3xl mb-2">🧪</div><div className="font-bold">영양소</div></div>
+                                    <div className="bg-purple-500/20 border border-purple-500 rounded-xl p-4"><div className="text-3xl mb-2">💊</div><div className="font-bold">호르몬</div></div>
+                                    <div className="bg-yellow-500/20 border border-yellow-500 rounded-xl p-4"><div className="text-3xl mb-2">🍊</div><div className="font-bold">비타민</div></div>
+                                    <div className="bg-blue-500/20 border border-blue-500 rounded-xl p-4"><div className="text-3xl mb-2">⚙️</div><div className="font-bold">효소</div></div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Bioelectric Tab */}
+                    {activeTab === 'bioelectric' && (
+                        <motion.div key="bioelectric" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full glass rounded-xl p-6">
+                            <div className="text-center py-12">
+                                <div className="text-8xl mb-6">⚡</div>
+                                <h2 className="text-3xl font-bold gradient-text mb-4">생체 전기 그리드</h2>
+                                <p className="text-white/60 max-w-2xl mx-auto mb-8">세계 최초 식물 기반 전력 생산 시스템</p>
+                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+                                    <div className="bg-yellow-500/20 border border-yellow-500 rounded-xl p-4"><div className="text-3xl mb-2">🌱</div><div className="font-bold">광합성 발전</div></div>
+                                    <div className="bg-green-500/20 border border-green-500 rounded-xl p-4"><div className="text-3xl mb-2">🦠</div><div className="font-bold">미생물 연료전지</div></div>
+                                    <div className="bg-blue-500/20 border border-blue-500 rounded-xl p-4"><div className="text-3xl mb-2">🔋</div><div className="font-bold">바이오 커패시터</div></div>
+                                    <div className="bg-purple-500/20 border border-purple-500 rounded-xl p-4"><div className="text-3xl mb-2">📊</div><div className="font-bold">전력 네트워크</div></div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Weather Engineering Tab */}
+                    {activeTab === 'weathereng' && (
+                        <motion.div key="weathereng" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full glass rounded-xl p-6">
+                            <div className="text-center py-12">
+                                <div className="text-8xl mb-6">🌤️</div>
+                                <h2 className="text-3xl font-bold gradient-text mb-4">기상 공학 시스템</h2>
+                                <p className="text-white/60 max-w-2xl mx-auto mb-8">세계 최초 농장 규모 기상 제어 시스템</p>
+                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+                                    <div className="bg-orange-500/20 border border-orange-500 rounded-xl p-4"><div className="text-3xl mb-2">🌡️</div><div className="font-bold">온도 제어</div></div>
+                                    <div className="bg-blue-500/20 border border-blue-500 rounded-xl p-4"><div className="text-3xl mb-2">💧</div><div className="font-bold">습도 조절</div></div>
+                                    <div className="bg-yellow-500/20 border border-yellow-500 rounded-xl p-4"><div className="text-3xl mb-2">☀️</div><div className="font-bold">광량 관리</div></div>
+                                    <div className="bg-gray-500/20 border border-gray-500 rounded-xl p-4"><div className="text-3xl mb-2">🌧️</div><div className="font-bold">강수 생성</div></div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Seed Optimizer Tab */}
+                    {activeTab === 'seedopt' && (
+                        <motion.div key="seedopt" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full glass rounded-xl p-6">
+                            <div className="text-center py-12">
+                                <div className="text-8xl mb-6">🌱</div>
+                                <h2 className="text-3xl font-bold gradient-text mb-4">양자 종자 최적화기</h2>
+                                <p className="text-white/60 max-w-2xl mx-auto mb-8">세계 최초 양자 기술 기반 종자 잠재력 극대화</p>
+                                <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+                                    <div className="bg-indigo-500/20 border border-indigo-500 rounded-xl p-4"><div className="text-3xl mb-2">⚛️</div><div className="font-bold">양자 어닐링</div></div>
+                                    <div className="bg-purple-500/20 border border-purple-500 rounded-xl p-4"><div className="text-3xl mb-2">🧬</div><div className="font-bold">유전자 프로파일</div></div>
+                                    <div className="bg-pink-500/20 border border-pink-500 rounded-xl p-4"><div className="text-3xl mb-2">📈</div><div className="font-bold">형질 개선</div></div>
+                                    <div className="bg-green-500/20 border border-green-500 rounded-xl p-4"><div className="text-3xl mb-2">✨</div><div className="font-bold">잠재력 극대화</div></div>
                                 </div>
                             </div>
                         </motion.div>
