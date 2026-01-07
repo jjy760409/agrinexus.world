@@ -28,8 +28,9 @@ import NegotiationPanel from './NegotiationPanel';
 import FileUploadAnalyzer from '@/components/upload/FileUploadAnalyzer';
 import SuperAgentPanel from './SuperAgentPanel';
 import SuperIntelligencePanel from './SuperIntelligencePanel';
+import SoillessPanel from './SoillessPanel';
 
-type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'dna' | 'logistics' | 'hologram' | 'quantum' | 'blockchain' | 'negotiation' | 'telepathy' | 'biophoton' | 'chrono' | 'water' | 'rootai' | 'gravity' | 'emotion' | 'molecular' | 'bioelectric' | 'weathereng' | 'seedopt' | 'superagent' | 'superintel' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
+type DesignerTab = 'design' | 'automation' | 'crops' | 'systems' | 'ai' | 'traceability' | 'conversation' | 'swarm' | 'space' | 'dna' | 'logistics' | 'hologram' | 'quantum' | 'blockchain' | 'negotiation' | 'telepathy' | 'biophoton' | 'chrono' | 'water' | 'rootai' | 'gravity' | 'emotion' | 'molecular' | 'bioelectric' | 'weathereng' | 'seedopt' | 'superagent' | 'superintel' | 'soilless' | 'upload' | 'equipment' | 'agents' | 'simulation' | 'whitepaper';
 
 export default function SmartFarmDesigner() {
     const [activeTab, setActiveTab] = useState<DesignerTab>('design');
@@ -68,6 +69,7 @@ export default function SmartFarmDesigner() {
         { id: 'seedopt' as const, label: '🌱 양자종자', icon: '✨' },
         { id: 'superagent' as const, label: '🦸 슈퍼에이전트', icon: '🤖' },
         { id: 'superintel' as const, label: '🧠 초지능검증', icon: '👑' },
+        { id: 'soilless' as const, label: '💧 무토양재배', icon: '🌿' },
         { id: 'conversation' as const, label: '🌿 식물대화', icon: '💬' },
         { id: 'swarm' as const, label: '🤖 군집로봇', icon: '🐝' },
         { id: 'space' as const, label: '🚀 우주농업', icon: '🌌' },
@@ -883,6 +885,13 @@ export default function SmartFarmDesigner() {
                     {activeTab === 'superintel' && (
                         <motion.div key="superintel" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full">
                             <SuperIntelligencePanel />
+                        </motion.div>
+                    )}
+
+                    {/* Soilless Tab */}
+                    {activeTab === 'soilless' && (
+                        <motion.div key="soilless" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="h-full">
+                            <SoillessPanel />
                         </motion.div>
                     )}
 
