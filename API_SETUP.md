@@ -1,144 +1,215 @@
-# 🔌 AgriNexus World OS - API 설정 가이드
+# 🔑 API 키 발급 및 설정 가이드
 
-## 📋 API가 필요한 기능 목록
-
-| 기능 | API | 용도 | 무료? |
-|------|-----|------|-------|
-| 🤖 AI 챗봇 | OpenAI | 스마트팜 질문 답변 | 💰 유료 |
-| 🌤️ 날씨 예보 | OpenWeatherMap | 실시간 기상 정보 | ✅ 무료 |
-| 🗺️ 지도 | Google Maps | 농장 위치 표시 | ✅ 무료* |
-| 📊 시장 가격 | 공공데이터포털 | 농산물 시세 | ✅ 무료 |
-| 📧 알림 | SendGrid | 이메일 알림 | ✅ 무료* |
-| 💬 실시간 채팅 | Pusher | 협업 채팅 | ✅ 무료* |
-
-*일정 사용량까지 무료
+> 초등학생도 따라할 수 있는 **아주 쉬운** 단계별 가이드입니다!
 
 ---
 
-## 🚀 1단계: Vercel 환경변수 설정
+## 📋 목차
 
-### 설정 방법
-1. **Vercel 대시보드** → 프로젝트 선택
-2. **Settings** → **Environment Variables**
-3. 아래 값들을 하나씩 추가
-
----
-
-## 🤖 OpenAI API (AI 챗봇)
-
-### 키 발급
-1. https://platform.openai.com 접속
-2. 로그인 → API Keys → Create new key
-3. 키 복사
-
-### Vercel에 추가
-```
-이름: OPENAI_API_KEY
-값: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+1. [기상청 API](#1-기상청-api)
+2. [농산물 시세 API](#2-농산물-시세-api-kamis)
+3. [네이버 클라우드 AI](#3-네이버-클라우드-ai)
+4. [토스페이먼츠](#4-토스페이먼츠-결제)
+5. [API 키 입력하기](#5-api-키-입력하기)
 
 ---
 
-## 🌤️ OpenWeatherMap API (날씨)
+## 1. 기상청 API
 
-### 키 발급 (무료)
-1. https://openweathermap.org/api 접속
-2. 회원가입 → API Keys 탭
-3. 키 복사 (자동 생성됨)
+### 🎯 이게 뭐예요?
+날씨 정보를 가져오는 API예요. 온도, 습도, 비올 확률 등을 알 수 있어요!
 
-### Vercel에 추가
+### 📝 발급 순서
+
+#### 1단계: 공공데이터포털 가입
+1. 인터넷 주소창에 입력: `data.go.kr`
+2. 오른쪽 위 **"회원가입"** 클릭
+3. 이름, 이메일, 비밀번호 입력
+4. **"가입완료"** 버튼 클릭
+
+#### 2단계: 로그인하기
+1. 다시 `data.go.kr` 접속
+2. 오른쪽 위 **"로그인"** 클릭
+3. 이메일과 비밀번호 입력
+
+#### 3단계: API 신청하기
+1. 검색창에 **"단기예보"** 검색
+2. **"기상청_단기예보 ((구)_동네예보) 조회서비스"** 클릭
+3. **"활용신청"** 버튼 클릭
+4. 활용목적에 **"스마트팜 연동"** 입력
+5. **"신청"** 버튼 클릭
+
+#### 4단계: API 키 확인하기
+1. 위쪽 메뉴에서 **"마이페이지"** 클릭
+2. **"인증키 발급현황"** 클릭
+3. 긴 문자열 (영어+숫자) = **이게 API 키!**
+4. **복사해서 메모장에 붙여넣기** 📋
+
+> ⏰ 신청 후 1~2시간 기다려야 해요!
+
+---
+
+## 2. 농산물 시세 API (KAMIS)
+
+### 🎯 이게 뭐예요?
+오늘 상추가 얼마인지, 딸기 가격이 어떤지 알려주는 API예요!
+
+### 📝 발급 순서
+
+#### 1단계: KAMIS 가입
+1. 인터넷 주소창에 입력: `kamis.or.kr`
+2. 오른쪽 위 **"회원가입"** 클릭
+3. 정보 입력하고 가입
+
+#### 2단계: API 신청
+1. 아래쪽으로 스크롤
+2. **"Open API"** 메뉴 찾기
+3. **"API 이용 신청"** 클릭
+4. 신청서 작성하고 제출
+
+#### 3단계: 키 받기
+1. 이메일 확인해요
+2. KAMIS에서 온 메일 열기
+3. API 키가 적혀있어요! 📋
+
+---
+
+## 3. 네이버 클라우드 AI
+
+### 🎯 이게 뭐예요?
+사진 분석, 번역 같은 AI 기능을 쓸 수 있어요!
+
+### 📝 발급 순서
+
+#### 1단계: 네이버 클라우드 가입
+1. 인터넷 주소창에: `www.ncloud.com`
+2. **"회원가입"** 클릭
+3. 네이버 아이디로 로그인해도 돼요!
+
+#### 2단계: 결제수단 등록 (무료 크레딧 줘요!)
+1. 마이페이지 → 결제관리
+2. 카드 등록 (걱정마세요, 무료 크레딧 있어요)
+
+#### 3단계: API 만들기
+1. **"콘솔"** 버튼 클릭
+2. 왼쪽 메뉴에서 **"AI Services"** 찾기
+3. 원하는 서비스 선택 (예: CLOVA)
+4. **"이용 신청"** 클릭
+
+#### 4단계: 키 확인
+1. **"마이페이지"** → **"인증키 관리"**
+2. **Access Key**와 **Secret Key** 두 개 있어요
+3. 둘 다 메모장에 복사! 📋
+
+---
+
+## 4. 토스페이먼츠 (결제)
+
+### 🎯 이게 뭐예요?
+온라인에서 돈 받을 수 있게 해주는 API예요!
+
+### 📝 발급 순서
+
+#### 1단계: 토스페이먼츠 가입
+1. 인터넷 주소창에: `developers.tosspayments.com`
+2. **"회원가입"** 클릭
+3. 토스 아이디로 로그인 가능!
+
+#### 2단계: 테스트 키 받기
+1. 로그인 후 **"개발 정보"** 클릭
+2. **"테스트 키"** 탭 선택
+3. **클라이언트 키**와 **시크릿 키** 보여요
+4. 둘 다 복사! 📋
+
+> 💡 테스트 키로 먼저 연습하고, 나중에 실제 키로 바꿔요!
+
+---
+
+## 5. API 키 입력하기
+
+### 📁 파일 만들기
+
+1. 프로젝트 폴더 열기
+2. `.env.local` 이라는 파일 만들기
+
+### ✏️ 키 입력하기
+
+파일에 아래처럼 입력해요:
+
+```env
+# 기상청 API
+NEXT_PUBLIC_WEATHER_API_KEY=여기에복사한키붙여넣기
+
+# KAMIS 농산물 API
+NEXT_PUBLIC_KAMIS_API_KEY=여기에복사한키붙여넣기
+NEXT_PUBLIC_KAMIS_CERT_ID=여기에ID붙여넣기
+
+# 네이버 클라우드
+NAVER_CLIENT_ID=여기에AccessKey붙여넣기
+NAVER_CLIENT_SECRET=여기에SecretKey붙여넣기
+
+# 토스페이먼츠
+TOSS_CLIENT_KEY=여기에클라이언트키붙여넣기
+TOSS_SECRET_KEY=여기에시크릿키붙여넣기
 ```
-이름: OPENWEATHER_API_KEY
-값: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+### 예시 (가짜 키예요!)
+
+```env
+NEXT_PUBLIC_WEATHER_API_KEY=AbCdEfGhIjKlMnOpQrStUvWxYz123456
+NEXT_PUBLIC_KAMIS_API_KEY=1234-5678-abcd-efgh
+```
+
+### ⚠️ 주의사항
+
+1. **= 기호** 앞뒤에 **띄어쓰기 하면 안 돼요!**
+2. **큰따옴표** 감싸면 안 돼요!
+3. 저장 후 **서버 재시작** 해야 해요!
+
+### 🔄 서버 재시작
+
+터미널에서:
+```bash
+# 1. Ctrl + C 눌러서 서버 끄기
+# 2. 다시 시작
+npm run dev
 ```
 
 ---
 
-## 🗺️ Google Maps API (지도)
+## ✅ 확인하기
 
-### 키 발급
-1. https://console.cloud.google.com 접속
-2. 새 프로젝트 생성
-3. APIs & Services → Credentials
-4. Create Credentials → API Key
+모든 키를 잘 입력했는지 확인해볼까요?
 
-### Vercel에 추가
-```
-이름: NEXT_PUBLIC_GOOGLE_MAPS_KEY
-값: AIzaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+| API | 체크 | 상태 |
+|-----|------|------|
+| 기상청 | ⬜ | `data.go.kr` 마이페이지에서 확인 |
+| KAMIS | ⬜ | 이메일 확인 |
+| 네이버 | ⬜ | `ncloud.com` 콘솔에서 확인 |
+| 토스 | ⬜ | `developers.tosspayments.com`에서 확인 |
 
 ---
 
-## 📊 공공데이터포털 API (농산물 시세)
+## 🆘 문제가 생겼어요!
 
-### 키 발급 (무료)
-1. https://www.data.go.kr 접속
-2. 회원가입 → 로그인
-3. "농산물 가격" 검색
-4. 활용신청 → 키 발급
+### "API 키가 안 돼요"
+- `.env.local` 파일이 **루트 폴더**에 있는지 확인
+- 띄어쓰기나 따옴표 없는지 확인
+- 서버 **재시작** 했는지 확인
 
-### Vercel에 추가
-```
-이름: KOREA_DATA_API_KEY
-값: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+### "승인이 안 돼요"
+- 공공 API는 **1~2시간** 기다려야 해요
+- 주말에는 더 오래 걸릴 수 있어요
 
----
-
-## 📧 SendGrid API (이메일 알림)
-
-### 키 발급
-1. https://sendgrid.com 접속
-2. 회원가입 → Settings → API Keys
-3. Create API Key
-
-### Vercel에 추가
-```
-이름: SENDGRID_API_KEY
-값: SG.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+### "무료인가요?"
+- 기상청, KAMIS: **완전 무료!** 🆓
+- 네이버: 매달 **무료 크레딧** 줘요
+- 토스: **테스트는 무료**, 실제 결제시 수수료
 
 ---
 
-## 💬 Pusher API (실시간 채팅)
+## 🎉 완료!
 
-### 키 발급
-1. https://pusher.com 접속
-2. 회원가입 → Create App
-3. App Keys 탭에서 복사
+모든 API 키를 설정하면 이제 **실제 데이터**로 스마트팜을 운영할 수 있어요!
 
-### Vercel에 추가 (4개)
-```
-이름: NEXT_PUBLIC_PUSHER_KEY
-값: xxxxxxxxxxxxxxxx
-
-이름: PUSHER_APP_ID
-값: xxxxxxx
-
-이름: PUSHER_SECRET
-값: xxxxxxxxxxxxxxxx
-
-이름: NEXT_PUBLIC_PUSHER_CLUSTER
-값: ap3
-```
-
----
-
-## ✅ 환경변수 설정 완료 후
-
-1. Vercel에서 **Redeploy** 클릭
-2. 새 배포가 완료되면 API 사용 가능!
-
----
-
-## 🎯 우선순위 추천
-
-### 1순위 (무료, 쉬움)
-- ✅ OpenWeatherMap - 날씨 정보
-
-### 2순위 (무료, 중간)
-- ✅ 공공데이터포털 - 농산물 시세
-
-### 3순위 (유료, 강력)
-- 💰 OpenAI - AI 챗봇
+질문이 있으면 언제든 물어보세요! 😊
