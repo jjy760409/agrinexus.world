@@ -352,7 +352,7 @@ export default function UniverseCore() {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.05 }}
                         >
-                            <Link href={`/${key.toLowerCase()}`}>
+                            <Link href="/system">
                                 <div className="card-interactive text-center p-4 group">
                                     <div className="flex items-center justify-center gap-2 mb-2">
                                         <span className="text-3xl group-hover:scale-110 transition-transform">{cluster.icon}</span>
