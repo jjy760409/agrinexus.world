@@ -381,18 +381,21 @@ export default function HyperAgentDashboard() {
                             desc: '현재 자동화 수준이 94%입니다. 추가 2개 프로세스 자동화로 97%까지 향상 가능합니다.',
                             action: '최적화 적용',
                             icon: <TrendingUp size={20} />,
+                            href: '/smartfarm',
                         },
                         {
                             title: '에이전트 성능 분석',
                             desc: '예측 에이전트의 정확도가 98.2%로 상승했습니다. 모델 업그레이드가 성공적으로 적용되었습니다.',
                             action: '상세 보기',
                             icon: <Bot size={20} />,
+                            href: '/analytics',
                         },
                         {
                             title: '보안 상태',
                             desc: '모든 자율 에이전트가 정상 범위 내에서 작동 중입니다. 이상 행동 감지 없음.',
                             action: '보안 점검',
                             icon: <Shield size={20} />,
+                            href: '/monitoring',
                         },
                     ].map((item, i) => (
                         <div key={item.title} className="p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
@@ -403,9 +406,9 @@ export default function HyperAgentDashboard() {
                             <p className="text-sm text-[var(--text-muted)] mb-3">
                                 {item.desc}
                             </p>
-                            <button className="btn btn-ghost text-[var(--primary-green)] text-sm p-0 h-auto">
+                            <a href={item.href} className="btn btn-ghost text-[var(--primary-green)] text-sm p-0 h-auto inline-flex items-center gap-1">
                                 {item.action} <ChevronRight size={14} />
-                            </button>
+                            </a>
                         </div>
                     ))}
                 </div>

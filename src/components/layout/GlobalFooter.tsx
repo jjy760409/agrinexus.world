@@ -35,10 +35,10 @@ export default function GlobalFooter() {
                                 {translation.appDescription}
                             </p>
                             <div className="flex items-center gap-3">
-                                <SocialIcon href="#" icon="𝕏" />
-                                <SocialIcon href="#" icon="in" />
-                                <SocialIcon href="#" icon="▶" />
-                                <SocialIcon href="#" icon="📷" />
+                                <SocialIcon href="https://twitter.com" icon="𝕏" />
+                                <SocialIcon href="https://linkedin.com" icon="in" />
+                                <SocialIcon href="https://youtube.com" icon="▶" />
+                                <SocialIcon href="https://instagram.com" icon="📷" />
                             </div>
                         </div>
 
@@ -58,11 +58,11 @@ export default function GlobalFooter() {
                         <div>
                             <h4 className="font-semibold text-white mb-4">Company</h4>
                             <ul className="space-y-2 text-sm text-white/60">
-                                <FooterLink href="#">About Us</FooterLink>
-                                <FooterLink href="#">Technology</FooterLink>
-                                <FooterLink href="#">Partnerships</FooterLink>
-                                <FooterLink href="#">Careers</FooterLink>
-                                <FooterLink href="#">Contact</FooterLink>
+                                <FooterLink href="/">About Us</FooterLink>
+                                <FooterLink href="/ai">Technology</FooterLink>
+                                <FooterLink href="/hyper-agent">AI Automation</FooterLink>
+                                <FooterLink href="/analytics">Analytics</FooterLink>
+                                <FooterLink href="/monitoring">Contact</FooterLink>
                             </ul>
                         </div>
 
@@ -119,9 +119,9 @@ export default function GlobalFooter() {
                             </div>
 
                             <div className="flex items-center gap-4">
-                                <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-                                <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
-                                <Link href="#" className="hover:text-white transition-colors">Cookie Policy</Link>
+                                <Link href="/" className="hover:text-white transition-colors">Privacy Policy</Link>
+                                <Link href="/" className="hover:text-white transition-colors">Terms of Service</Link>
+                                <Link href="/" className="hover:text-white transition-colors">Cookie Policy</Link>
                             </div>
 
                             <div className="flex items-center gap-2">
