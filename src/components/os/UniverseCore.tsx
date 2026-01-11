@@ -21,7 +21,9 @@ import {
     Globe2,
     Sparkles,
     BarChart3,
-    Microscope
+    Microscope,
+    Bot,
+    Box
 } from 'lucide-react';
 
 // Animation variants
@@ -48,20 +50,20 @@ export default function UniverseCore() {
     // Quick access cards data
     const quickAccessCards = [
         {
-            title: 'AI 작물 예측',
-            description: '수확량 예측 및 성장 분석',
-            icon: <Leaf size={24} />,
-            href: '/ai/crop-prediction',
-            color: 'var(--primary-green)',
-            badge: 'AI'
+            title: '슈퍼 에이전트',
+            description: '자율 AI 자동화 시스템',
+            icon: <Bot size={24} />,
+            href: '/hyper-agent',
+            color: 'var(--secondary-violet)',
+            badge: 'SUPER'
         },
         {
-            title: '질병 진단',
-            description: 'AI 이미지 분석 진단',
-            icon: <Microscope size={24} />,
-            href: '/ai/disease-diagnosis',
-            color: 'var(--status-warning)',
-            badge: 'NEW'
+            title: '스마트팜 3D',
+            description: '실시간 3D 설계 시스템',
+            icon: <Box size={24} />,
+            href: '/smartfarm',
+            color: 'var(--primary-green)',
+            badge: '3D'
         },
         {
             title: '실시간 모니터링',
@@ -77,7 +79,7 @@ export default function UniverseCore() {
             icon: <Brain size={24} />,
             href: '/ai',
             color: 'var(--primary-indigo)',
-            badge: null
+            badge: 'AI'
         }
     ];
 
