@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useOSStore } from '@/store/useOSStore';
+import { Menu, Bell, ChevronLeft, Activity, Cpu, Zap, Clock } from 'lucide-react';
 
 export default function OSHeader() {
     const { globalStats, isConnected, alerts, currentCluster, setCurrentCluster, currentSystem, setCurrentSystem } = useOSStore();
-    const [currentTime, setCurrentTime] = useState('--:--:--');
+    const [currentTime, setCurrentTime] = useState('--:--');
     const [currentDate, setCurrentDate] = useState('');
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
 
     useEffect(() => {
         const updateTime = () => {
@@ -15,12 +17,10 @@ export default function OSHeader() {
             setCurrentTime(now.toLocaleTimeString('ko-KR', {
                 hour: '2-digit',
                 minute: '2-digit',
-                second: '2-digit',
                 hour12: false,
             }));
             setCurrentDate(now.toLocaleDateString('ko-KR', {
-                year: 'numeric',
-                month: 'long',
+                month: 'short',
                 day: 'numeric',
                 weekday: 'short',
             }));
@@ -33,7 +33,7 @@ export default function OSHeader() {
 
     const unreadAlerts = alerts.filter(a => !a.acknowledged).length;
 
-    const handleBackToHome = () => {
+    const handleBack = () => {
         if (currentSystem) {
             setCurrentSystem(null);
         } else if (currentCluster) {
@@ -41,152 +41,136 @@ export default function OSHeader() {
         }
     };
 
+    const handleGoHome = () => {
+        setCurrentCluster(null);
+        setCurrentSystem(null);
+    };
+
     return (
-        <header className="relative z-50 glass border-b border-white/10 backdrop-blur-xl">
-            <div className="flex items-center justify-between px-4 md:px-6 py-3">
-                {/* Left: Logo & Navigation */}
-                <div className="flex items-center gap-4">
-                    {/* Back Button */}
+        <header className="sticky top-0 z-50 bg-[var(--bg-secondary)] border-b border-[var(--border-subtle)]">
+            <div className="flex items-center justify-between h-16 px-4 lg:px-6">
+                {/* Left Section: Logo & Navigation */}
+                <div className="flex items-center gap-3">
+                    {/* Back Button - Only show when navigating */}
                     {(currentCluster || currentSystem) && (
                         <motion.button
-                            onClick={handleBackToHome}
-                            className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-[var(--primary-cyan)] transition-colors"
-                            whileHover={{ scale: 1.05 }}
+                            onClick={handleBack}
+                            className="w-9 h-9 flex items-center justify-center rounded-lg bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                             whileTap={{ scale: 0.95 }}
+                            aria-label="뒤로 가기"
                         >
-                            ←
+                            <ChevronLeft size={20} />
                         </motion.button>
                     )}
 
                     {/* Logo */}
-                    <motion.div
-                        className="flex items-center gap-3 cursor-pointer"
-                        onClick={() => { setCurrentCluster(null); setCurrentSystem(null); }}
-                        whileHover={{ scale: 1.02 }}
+                    <button 
+                        onClick={handleGoHome}
+                        className="flex items-center gap-3 hover:opacity-80 transition-opacity"
                     >
-                        <div className="relative w-10 h-10 md:w-12 md:h-12">
-                            <motion.div
-                                className="absolute inset-0 rounded-full bg-gradient-to-r from-[var(--primary-green)] via-[var(--primary-cyan)] to-[var(--primary-purple)] opacity-20"
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                            />
-                            <div className="absolute inset-1 rounded-full bg-[var(--bg-dark)] flex items-center justify-center">
-                                <span className="text-xl md:text-2xl">🌌</span>
-                            </div>
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--primary-green)] to-[var(--primary-blue)] flex items-center justify-center">
+                            <span className="text-xl">🌱</span>
                         </div>
-
                         <div className="hidden sm:block">
-                            <h1 className="text-lg md:text-xl font-bold gradient-text font-[family-name:var(--font-orbitron)] tracking-wide">
-                                AgriNexus World
+                            <h1 className="text-lg font-semibold text-[var(--text-primary)]">
+                                AgriNexus
                             </h1>
-                            <div className="flex items-center gap-2">
-                                <motion.span
-                                    className="inline-block px-2 py-0.5 text-[0.6rem] font-bold tracking-wider rounded bg-gradient-to-r from-[var(--primary-green)] via-[var(--primary-cyan)] to-[var(--primary-purple)] text-[var(--bg-dark)]"
-                                    animate={{ opacity: [1, 0.7, 1] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                >
-                                    OS 3.0
-                                </motion.span>
-                                <span className="text-[0.6rem] text-white/40 font-[family-name:var(--font-orbitron)]">
-                                    UNIVERSE
-                                </span>
-                            </div>
+                            <p className="text-xs text-[var(--text-muted)] -mt-0.5">
+                                World OS 4.0
+                            </p>
                         </div>
-                    </motion.div>
+                    </button>
                 </div>
 
-                {/* Center: Global Stats */}
+                {/* Center: Key Stats - Desktop Only */}
                 <div className="hidden lg:flex items-center gap-6">
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
-                        <span className="text-[var(--primary-green)]">🔗</span>
-                        <span className="text-xs text-white/60">시스템</span>
-                        <span className="font-[family-name:var(--font-orbitron)] text-sm text-white">
-                            {globalStats.activeSystems}/{globalStats.totalSystems}
-                        </span>
+                    <div className="flex items-center gap-2 text-sm">
+                        <div className="w-8 h-8 rounded-lg bg-[var(--primary-green)]/10 flex items-center justify-center">
+                            <Activity size={16} className="text-[var(--primary-green)]" />
+                        </div>
+                        <div>
+                            <p className="text-[var(--text-muted)] text-xs">시스템</p>
+                            <p className="font-semibold text-[var(--text-primary)]">
+                                {globalStats.activeSystems}/{globalStats.totalSystems}
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
-                        <span className="text-[var(--primary-cyan)]">📊</span>
-                        <span className="text-xs text-white/60">효율</span>
-                        <span className="font-[family-name:var(--font-orbitron)] text-sm text-[var(--primary-green)]">
-                            {globalStats.globalEfficiency}%
-                        </span>
+                    <div className="w-px h-8 bg-[var(--border-subtle)]" />
+
+                    <div className="flex items-center gap-2 text-sm">
+                        <div className="w-8 h-8 rounded-lg bg-[var(--primary-blue)]/10 flex items-center justify-center">
+                            <Cpu size={16} className="text-[var(--primary-blue)]" />
+                        </div>
+                        <div>
+                            <p className="text-[var(--text-muted)] text-xs">효율</p>
+                            <p className="font-semibold text-[var(--primary-green)]">
+                                {globalStats.globalEfficiency}%
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
-                        <span className="text-[var(--primary-purple)]">🧠</span>
-                        <span className="text-xs text-white/60">AI 결정</span>
-                        <span className="font-[family-name:var(--font-orbitron)] text-sm text-white">
-                            {globalStats.aiDecisions.toLocaleString()}
-                        </span>
-                    </div>
+                    <div className="w-px h-8 bg-[var(--border-subtle)]" />
 
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
-                        <span className="text-[var(--status-success)]">⚡</span>
-                        <span className="text-xs text-white/60">절감</span>
-                        <span className="font-[family-name:var(--font-orbitron)] text-sm text-[var(--status-success)]">
-                            {globalStats.energySaved}%
-                        </span>
+                    <div className="flex items-center gap-2 text-sm">
+                        <div className="w-8 h-8 rounded-lg bg-[var(--primary-indigo)]/10 flex items-center justify-center">
+                            <Zap size={16} className="text-[var(--primary-indigo)]" />
+                        </div>
+                        <div>
+                            <p className="text-[var(--text-muted)] text-xs">AI 결정</p>
+                            <p className="font-semibold text-[var(--text-primary)]">
+                                {globalStats.aiDecisions.toLocaleString()}
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                {/* Right: Status & Time */}
-                <div className="flex items-center gap-4">
-                    {/* Alerts */}
-                    <motion.div
-                        className="relative cursor-pointer"
-                        whileHover={{ scale: 1.1 }}
-                    >
-                        <span className="text-xl">🔔</span>
-                        {unreadAlerts > 0 && (
-                            <motion.span
-                                className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[var(--status-danger)] text-[0.6rem] flex items-center justify-center font-bold"
-                                animate={{ scale: [1, 1.2, 1] }}
-                                transition={{ duration: 1, repeat: Infinity }}
-                            >
-                                {unreadAlerts}
-                            </motion.span>
-                        )}
-                    </motion.div>
-
+                {/* Right Section: Status & Actions */}
+                <div className="flex items-center gap-3">
                     {/* Connection Status */}
-                    <div className="hidden md:flex items-center gap-2">
-                        <motion.span
-                            className={`w-2 h-2 rounded-full ${isConnected ? 'bg-[var(--status-success)]' : 'bg-[var(--status-danger)]'}`}
-                            animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                        />
-                        <span className="text-xs text-white/60">
-                            {isConnected ? '실시간' : '오프라인'}
+                    <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--bg-tertiary)]">
+                        <span className={`status-dot ${isConnected ? 'online' : 'offline'}`} />
+                        <span className="text-xs text-[var(--text-secondary)]">
+                            {isConnected ? '연결됨' : '오프라인'}
                         </span>
                     </div>
+
+                    {/* Notifications */}
+                    <button 
+                        className="relative w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors"
+                        aria-label="알림"
+                    >
+                        <Bell size={20} className="text-[var(--text-secondary)]" />
+                        {unreadAlerts > 0 && (
+                            <span className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full bg-[var(--status-danger)] text-white text-xs flex items-center justify-center font-medium">
+                                {unreadAlerts > 9 ? '9+' : unreadAlerts}
+                            </span>
+                        )}
+                    </button>
 
                     {/* Time */}
-                    <div className="text-right">
-                        <div className="font-[family-name:var(--font-orbitron)] text-lg text-[var(--primary-cyan)] tracking-wider">
-                            {currentTime}
-                        </div>
-                        <div className="text-[0.65rem] text-white/40 hidden md:block">
-                            {currentDate}
+                    <div className="hidden sm:flex items-center gap-2 pl-3 border-l border-[var(--border-subtle)]">
+                        <Clock size={16} className="text-[var(--text-muted)]" />
+                        <div className="text-right">
+                            <p className="text-sm font-semibold text-[var(--text-primary)] font-mono">
+                                {currentTime}
+                            </p>
+                            <p className="text-xs text-[var(--text-muted)] -mt-0.5">
+                                {currentDate}
+                            </p>
                         </div>
                     </div>
+
+                    {/* Mobile Menu Toggle */}
+                    <button 
+                        onClick={() => setShowMobileMenu(!showMobileMenu)}
+                        className="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors"
+                        aria-label="메뉴"
+                    >
+                        <Menu size={20} className="text-[var(--text-secondary)]" />
+                    </button>
                 </div>
             </div>
-
-            {/* Animated border */}
-            <motion.div
-                className="absolute bottom-0 left-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--primary-green)] to-transparent"
-                animate={{
-                    background: [
-                        'linear-gradient(90deg, transparent 0%, #00ff88 50%, transparent 100%)',
-                        'linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%)',
-                        'linear-gradient(90deg, transparent 0%, #7b2fff 50%, transparent 100%)',
-                        'linear-gradient(90deg, transparent 0%, #00ff88 50%, transparent 100%)',
-                    ]
-                }}
-                transition={{ duration: 4, repeat: Infinity }}
-                style={{ width: '100%' }}
-            />
         </header>
     );
 }
